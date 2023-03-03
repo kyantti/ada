@@ -6,6 +6,15 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica1.App",
+            "projectName": "ada_151a96cb",
+            "vmArgs": "--module-path /Users/pablosetrakianbearzotti/desarrollo/sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
+            
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

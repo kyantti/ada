@@ -45,6 +45,10 @@ public class ArrayGenerator {
         }
         return array;
     }
+
+    public int[][] generateAllCases(int size){
+        int[][] matrix = new int [3][size];
+    }
     
     public void makeFile() throws FileNotFoundException{
         
