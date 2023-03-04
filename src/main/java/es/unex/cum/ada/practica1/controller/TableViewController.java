@@ -3,8 +3,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import main.java.es.unex.cum.ada.practica1.model.SortingTest;
 
 public class TableViewController {
+
+    @FXML
+    private TableView<SortingTest> performanceTableView;
 
     @FXML
     private TableColumn<?, ?> arraySizeColumn;
@@ -14,9 +18,6 @@ public class TableViewController {
 
     @FXML
     private TableColumn<?, ?> cocktailSortTimeCol;
-
-    @FXML
-    private TableView<?> performanceTableView;
 
     @FXML
     private TableColumn<?, ?> quickSortTimeCol;

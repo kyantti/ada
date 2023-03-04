@@ -1,19 +1,8 @@
 package main.java.es.unex.cum.ada.practica1.model;
 
 public class CocktailSort implements SortingAlgorithm {
-	private long time;
-
-	public CocktailSort(){
-		time = 0;
-	}
-
-	public long getTime(){
-		return time;
-	}
-
     @Override
 	public int[] sort (int[] numbers, int left, int right) {
-		long t1 = System.currentTimeMillis();
 		boolean swapped = true;
 		int i = 0;
 		int j = numbers.length - 1;
@@ -41,8 +30,6 @@ public class CocktailSort implements SortingAlgorithm {
 			}
 			i++;
 		}
-		long t2 = System.currentTimeMillis();
-        time = t2 - t1;
         return numbers;
 	}
 

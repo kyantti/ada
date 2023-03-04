@@ -41,19 +41,12 @@ public class ArrayGenerator {
     public int[] generateAverageCase(int size) {
         array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt() * size;
+            array[i] = random.nextInt(0, size);
         }
         return array;
     }
 
-    public int[][] generateAllCases(int size){
-        int[][] matrix = new int [3][size];
-    }
-    
-    public void makeFile() throws FileNotFoundException{
-        
-        int[] sizes = {2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000};
-        
+    public void makeFile(int[] sizes) throws FileNotFoundException{
         // Crear el archivo de texto donde se guardará la salida
         File file = new File("salida.txt");
         PrintStream ps = new PrintStream(file);
@@ -73,7 +66,6 @@ public class ArrayGenerator {
             System.out.println("Array de " + size + " elementos en el caso promedio: " + averageCase.toString());
             
         }
-        
         // Cerrar el objeto PrintStream para liberar recursos
         ps.close();
     }

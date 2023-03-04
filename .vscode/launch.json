@@ -6,12 +6,26 @@
     "configurations": [
         {
             "type": "java",
+            "name": "SortingTest",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica1.model.SortingTest",
+            "projectName": "ada_5288a231"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica1.App",
+            "projectName": "ada_5288a231",
+            "vmArgs": "--module-path \"C:/Users/pablo/Desktop/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica1.App",
             "projectName": "ada_151a96cb",
             "vmArgs": "--module-path /Users/pablosetrakianbearzotti/desarrollo/sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
-            
         },
         {
             "type": "java",

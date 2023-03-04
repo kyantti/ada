@@ -1,7 +1,6 @@
 package main.java.es.unex.cum.ada.practica1.model;
 
 public class QuickSort implements SortingAlgorithm {
-	long time;
     @Override
 	public int[] sort(int[] a, int left, int right) {
 		if (left < right) {
