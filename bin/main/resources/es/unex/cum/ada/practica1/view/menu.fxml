@@ -14,7 +14,7 @@
             <Font name="American Typewriter" size="18.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="273.0" prefWidth="200.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="273.0" prefWidth="200.0" progress="0.0" />
       <Text layoutX="261.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor: Pablo Setrakian Bearzotti" textAlignment="RIGHT" />
    </children>
 </AnchorPane>

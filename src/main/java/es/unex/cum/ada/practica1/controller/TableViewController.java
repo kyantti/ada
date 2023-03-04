@@ -11,22 +11,22 @@ public class TableViewController {
     private TableView<SortingTest> performanceTableView;
 
     @FXML
-    private TableColumn<?, ?> arraySizeColumn;
+    private TableColumn<SortingTest, Long> arraySizeColumn;
 
     @FXML
-    private TableColumn<?, ?> bubbleSortTimeCol;
+    private TableColumn<SortingTest, Long> bubbleSortTimeCol;
 
     @FXML
-    private TableColumn<?, ?> cocktailSortTimeCol;
+    private TableColumn<SortingTest, Long> cocktailSortTimeCol;
 
     @FXML
-    private TableColumn<?, ?> quickSortTimeCol;
+    private TableColumn<SortingTest, Long> quickSortTimeCol;
 
     @FXML
-    private TableColumn<?, ?> selectionSortTimeCol;
+    private TableColumn<SortingTest, Long> selectionSortTimeCol;
 
     @FXML
-    private TableColumn<?, ?> sortingTimeColumns;
+    private TableColumn<SortingTest, Long> sortingTimeColumns;
 
     @FXML
     private Button viewGraphic;
