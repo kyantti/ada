@@ -20,6 +20,6 @@
             </TableColumn>
         </columns>
       </TableView>
-      <Button fx:id="viewGraphic" layoutX="343.0" layoutY="548.0" mnemonicParsing="false" text="Gráfica" />
+      <Button fx:id="viewGraphic" layoutX="343.0" layoutY="548.0" mnemonicParsing="false" onAction="#createLineChart" text="Gráfica" />
    </children>
 </AnchorPane>

@@ -1,49 +1,62 @@
 package main.java.es.unex.cum.ada.practica1.controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
 
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
-import main.java.es.unex.cum.ada.practica1.App;
+import javafx.stage.Stage;
+import main.java.es.unex.cum.ada.practica1.model.SortingResult;
 import main.java.es.unex.cum.ada.practica1.model.SortingTest;
 
-public class MenuController {
+public class MenuController implements Initializable {
     @FXML
     private ProgressBar progressBar;
 
+    private SortingTest sortingTest;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        sortingTest = new SortingTest();
+    }
+
     @FXML
-    void simulate(ActionEvent event) {
-        Task<Void> task = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                SortingTest sortingTest = new SortingTest();
-                sortingTest.test();
-                return null;
-            }
-        };
+    void test(ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
 
-        task.setOnRunning((e) -> {
-            progressBar.setProgress(0);
-        });
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/ada/practica1/view/table.fxml"));
+        root = loader.load();
 
-        task.setOnSucceeded((e) -> {
-            progressBar.setProgress(1);
-            Platform.runLater(() -> {
-                try {
-                    App.setRoot("/main/resources/es/unex/cum/ada/practica1/view/table");
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
-        });
+        TableViewController tableViewController = loader.getController();
+        sortingTest.test();
+        tableViewController.setSortingTest(sortingTest);
 
-        progressBar.progressProperty().bind(task.progressProperty());
+        for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
+            System.out.println("Size:" + set.getKey() + " -> " + "BubbleSort:" + set.getValue().getBubbleSortTime()
+                    + " - " + "CocktailSort:" + set.getValue().getCocktailSortTime() + " - " + "QuickSort:"
+                    + set.getValue().getQuickSortTime() + " - " + "SelectionSort:"
+                    + set.getValue().getSelectionSortTime());
+            tableViewController.getSortingResultOvlist().add(set.getValue());
+        }
 
-        new Thread(task).start();
+        tableViewController.getPerformanceTableView().setItems(tableViewController.getSortingResultOvlist());
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
     }
 
 }

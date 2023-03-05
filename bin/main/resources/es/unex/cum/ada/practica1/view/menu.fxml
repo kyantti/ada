@@ -8,13 +8,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.ada.practica1.controller.MenuController">
    <children>
-      <Button layoutX="201.0" layoutY="188.0" mnemonicParsing="false" onAction="#simulate" text="Simular" />
+      <Button layoutX="201.0" layoutY="188.0" mnemonicParsing="false" onAction="#test" text="Simular" />
       <Text layoutX="75.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulador de rendimiento: Algoritmos de ordenación" textAlignment="CENTER" wrappingWidth="311.53399658203125">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font>
       </Text>
-      <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="273.0" prefWidth="200.0" progress="0.0" />
       <Text layoutX="261.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor: Pablo Setrakian Bearzotti" textAlignment="RIGHT" />
+      <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="275.0" prefWidth="200.0" progress="0.0" />
    </children>
 </AnchorPane>
