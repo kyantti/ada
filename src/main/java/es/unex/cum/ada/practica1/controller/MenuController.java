@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,33 +31,46 @@ public class MenuController implements Initializable {
 
     @FXML
     void test(ActionEvent event) throws IOException {
-        Stage stage;
-        Scene scene;
         Parent root;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/ada/practica1/view/table.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/main/resources/es/unex/cum/ada/practica1/view/table.fxml"));
         root = loader.load();
 
         TableViewController tableViewController = loader.getController();
-        sortingTest.test();
-        tableViewController.setSortingTest(sortingTest);
 
-        for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
-            System.out.println("Size:" + set.getKey() + " -> " + "BubbleSort:" + set.getValue().getBubbleSortTime()
-                    + " - " + "CocktailSort:" + set.getValue().getCocktailSortTime() + " - " + "QuickSort:"
-                    + set.getValue().getQuickSortTime() + " - " + "SelectionSort:"
-                    + set.getValue().getSelectionSortTime());
-            tableViewController.getSortingResultOvlist().add(set.getValue());
-        }
+        Task<Void> sortingTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                sortingTest.test();
+                tableViewController.setSortingTest(sortingTest);
+                return null;
+            }
+        };
 
-        tableViewController.getPerformanceTableView().setItems(tableViewController.getSortingResultOvlist());
+        sortingTask.setOnSucceeded(e -> {
+            Stage stage;
+            Scene scene;
+            for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
+                System.out.println("Size:" + set.getKey() + " -> " + "BubbleSort:" + set.getValue().getBubbleSortTime()
+                        + " - " + "CocktailSort:" + set.getValue().getCocktailSortTime() + " - " + "QuickSort:"
+                        + set.getValue().getQuickSortTime() + " - " + "SelectionSort:"
+                        + set.getValue().getSelectionSortTime());
+                tableViewController.getSortingResultOvlist().add(set.getValue());
+            }
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+            tableViewController.getPerformanceTableView().setItems(tableViewController.getSortingResultOvlist());
 
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        });
+
+        progressBar.progressProperty().bind(sortingTask.progressProperty());
+
+        new Thread(sortingTask).start();
     }
 
 }

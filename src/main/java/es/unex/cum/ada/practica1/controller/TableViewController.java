@@ -1,4 +1,5 @@
 package main.java.es.unex.cum.ada.practica1.controller;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -69,7 +73,6 @@ public class TableViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         //Creo los observablelist
         sortingResultOvlist = FXCollections.observableArrayList();
         
@@ -127,6 +130,21 @@ public class TableViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    @FXML
+    void repeatTest(ActionEvent event) throws IOException {
+        Stage stage;
+        Scene scene;
+        Parent root;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/ada/practica1/view/menu.fxml"));
+        root = loader.load();
+        sortingTest.getResultsMap().clear();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 
 }

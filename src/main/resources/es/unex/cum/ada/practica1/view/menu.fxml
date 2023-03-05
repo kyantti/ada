@@ -8,8 +8,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.ada.practica1.controller.MenuController">
    <children>
-      <Button layoutX="201.0" layoutY="188.0" mnemonicParsing="false" onAction="#test" text="Simular" />
-      <Text layoutX="75.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulador de rendimiento: Algoritmos de ordenación" textAlignment="CENTER" wrappingWidth="311.53399658203125">
+      <Button layoutX="171.0" layoutY="187.0" mnemonicParsing="false" onAction="#test" text="Probar rendimiento" />
+      <Text layoutX="75.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banco de pruebas para algoritmos de ordenación" textAlignment="CENTER" wrappingWidth="311.53399658203125">
          <font>
             <Font name="American Typewriter" size="18.0" />
          </font>

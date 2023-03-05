@@ -22,6 +22,9 @@ public class SortingTest {
     }
 
     public void test() {
+
+        System.out.println("Ejecutando test");
+
         long time1 = 0;
         long time2 = 0;
         long time3 = 0;
