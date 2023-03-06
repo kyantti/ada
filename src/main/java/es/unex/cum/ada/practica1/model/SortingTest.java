@@ -22,7 +22,6 @@ public class SortingTest {
 
         long time1 = 0;
         long time2 = 0;
-        long time3 = 0;
 
         long bubbleSortTime = 0;
         long cocktailSortTime = 0;
@@ -41,103 +40,83 @@ public class SortingTest {
         SortingAlgorithm selectionSort = new SelectionSort();
 
         for (int size : sizes) {
-
             SortingResult sortingResult = new SortingResult();
 
-            // ------------------------BUBBLESORT--------------------------------------
-            // Best case
-            time1 = System.currentTimeMillis();
-            bubbleSort.sort(arrayGenerator.generateBestCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time2 - time1;
-            // Average case
-            time1 = System.currentTimeMillis();
-            bubbleSort.sort(arrayGenerator.generateAverageCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time3 + (time2 - time1);
-            // Worst case
-            time1 = System.currentTimeMillis();
-            bubbleSort.sort(arrayGenerator.generateWorstCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
+            int [] bestCaseArray = arrayGenerator.generateBestCase(size);
+            int [] averageCaseArray = arrayGenerator.generateAverageCase(size);
+            int [] worstCaseArray = arrayGenerator.generateWorstCase(size);
+            
+            for (int i = 0; i < sizes.length; i++) {
 
-            // Store results
-            bubbleSortTime = time3 + (time2 - time1);
+                //--------------------------------BUBBLESORT--------------------------------
+                time1 = System.currentTimeMillis();
+                bubbleSort.sort(bestCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getBubbleSortTimes().put("Best", time2-time1);
 
-            // ------------------------COCKTAILSORT-------------------------------------
+                time1 = System.currentTimeMillis();
+                bubbleSort.sort(averageCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getBubbleSortTimes().put("Average", time2-time1);
 
-            // Best case
-            time1 = System.currentTimeMillis();
-            cocktailSort.sort(arrayGenerator.generateBestCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time2 - time1;
-            // Average case
-            time1 = System.currentTimeMillis();
-            cocktailSort.sort(arrayGenerator.generateAverageCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time3 + (time2 - time1);
-            // Worst case
-            time1 = System.currentTimeMillis();
-            cocktailSort.sort(arrayGenerator.generateWorstCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            // Store results
-            cocktailSortTime = time3 + (time2 - time1);
+                time1 = System.currentTimeMillis();
+                bubbleSort.sort(worstCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getBubbleSortTimes().put("Worst", time2-time1);
 
-            // ------------------------QUICKSORT-------------------------------------
+                //--------------------------------COCKTAILSORT--------------------------------
+                time1 = System.currentTimeMillis();
+                cocktailSort.sort(bestCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getCocktailSortTimes().put("Best", time2-time1);
 
-            // Best case
-            time1 = System.currentTimeMillis();
-            quickSort.sort(arrayGenerator.generateBestCase(size), 0, size - 1);
-            time2 = System.currentTimeMillis();
-            time3 = time2 - time1;
-            // Average case
-            time1 = System.currentTimeMillis();
-            quickSort.sort(arrayGenerator.generateAverageCase(size), 0, size - 1);
-            time2 = System.currentTimeMillis();
-            time3 = time3 + (time2 - time1);
-            // Worst case
-            time1 = System.currentTimeMillis();
-            quickSort.sort(arrayGenerator.generateWorstCase(size), 0, size - 1);
-            time2 = System.currentTimeMillis();
-            // Store results
-            quickSortTime = time3 + (time2 - time1);
+                time1 = System.currentTimeMillis();
+                cocktailSort.sort(averageCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getCocktailSortTimes().put("Average", time2-time1);
 
-            // ------------------------SELECTIONSORT-------------------------------------
+                time1 = System.currentTimeMillis();
+                cocktailSort.sort(worstCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getCocktailSortTimes().put("Worst", time2-time1);
 
-            // Best case
-            time1 = System.currentTimeMillis();
-            selectionSort.sort(arrayGenerator.generateBestCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time2 - time1;
-            // Average case
-            time1 = System.currentTimeMillis();
-            selectionSort.sort(arrayGenerator.generateAverageCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            time3 = time3 + (time2 - time1);
-            // Worst case
-            time1 = System.currentTimeMillis();
-            selectionSort.sort(arrayGenerator.generateWorstCase(size), 0, 0);
-            time2 = System.currentTimeMillis();
-            // Store results
-            selectionSortTime = time3 + (time2 - time1);
+                //--------------------------------QUICKSORT--------------------------------
+                time1 = System.currentTimeMillis();
+                quickSort.sort(bestCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getQuickSortTimes().put("Best", time2-time1);
 
-            sortingResult.setSize(size);
-            sortingResult.setBubbleSortTime(bubbleSortTime / 3);
-            sortingResult.setCocktailSortTime(cocktailSortTime / 3);
-            sortingResult.setQuickSortTime(quickSortTime / 3);
-            sortingResult.setSelectionSortTime(selectionSortTime / 3);
+                time1 = System.currentTimeMillis();
+                quickSort.sort(averageCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getQuickSortTimes().put("Average", time2-time1);
 
-            resultsMap.put(size, sortingResult);
+                time1 = System.currentTimeMillis();
+                quickSort.sort(worstCaseArray, 0, 0);
+                time2 = System.currentTimeMillis();
+                sortingResult.getQuickSortTimes().put("Worst", time2-time1);
+
+                 //--------------------------------QUICKSORT--------------------------------
+                 time1 = System.currentTimeMillis();
+                 selectionSort.sort(bestCaseArray, 0, 0);
+                 time2 = System.currentTimeMillis();
+                 sortingResult.getSelectionSortTimes().put("Best", time2-time1);
+ 
+                 time1 = System.currentTimeMillis();
+                 selectionSort.sort(averageCaseArray, 0, 0);
+                 time2 = System.currentTimeMillis();
+                 sortingResult.getSelectionSortTimes().put("Average", time2-time1);
+ 
+                 time1 = System.currentTimeMillis();
+                 selectionSort.sort(worstCaseArray, 0, 0);
+                 time2 = System.currentTimeMillis();
+                 sortingResult.getSelectionSortTimes().put("Worst", time2-time1);
+
+            }
+
+            
 
         }
-        System.out.println("Test terminado");
-        for (Entry<Integer, SortingResult> result : resultsMap.entrySet()) {
-            System.out.println("Size:" + result.getKey() + " -> " + "BubbleSort:" + result.getValue().getBubbleSortTime()
-                        + " - " + "CocktailSort:" + result.getValue().getCocktailSortTime() + " - " + "QuickSort:"
-                        + result.getValue().getQuickSortTime() + " - " + "SelectionSort:"
-                        + result.getValue().getSelectionSortTime());
-            totalTime = totalTime + result.getValue().getBubbleSortTime() + result.getValue().getCocktailSortTime() + result.getValue().getQuickSortTime() + result.getValue().getSelectionSortTime();
-        }
-        System.out.println("Tiempo total transcurrido: " + totalTime + " mseg");
     }
 
 }
