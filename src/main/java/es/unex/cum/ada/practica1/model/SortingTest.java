@@ -2,6 +2,7 @@ package main.java.es.unex.cum.ada.practica1.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class SortingTest {
 
@@ -27,6 +28,8 @@ public class SortingTest {
         long cocktailSortTime = 0;
         long quickSortTime = 0;
         long selectionSortTime = 0;
+
+        long totalTime = 0;
 
         int[] sizes = { 2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000 };
 
@@ -126,6 +129,15 @@ public class SortingTest {
             resultsMap.put(size, sortingResult);
 
         }
+        System.out.println("Test terminado");
+        for (Entry<Integer, SortingResult> result : resultsMap.entrySet()) {
+            System.out.println("Size:" + result.getKey() + " -> " + "BubbleSort:" + result.getValue().getBubbleSortTime()
+                        + " - " + "CocktailSort:" + result.getValue().getCocktailSortTime() + " - " + "QuickSort:"
+                        + result.getValue().getQuickSortTime() + " - " + "SelectionSort:"
+                        + result.getValue().getSelectionSortTime());
+            totalTime = totalTime + result.getValue().getBubbleSortTime() + result.getValue().getCocktailSortTime() + result.getValue().getQuickSortTime() + result.getValue().getSelectionSortTime();
+        }
+        System.out.println("Tiempo total transcurrido: " + totalTime + " mseg");
     }
 
 }

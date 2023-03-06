@@ -1,3 +1,0 @@
-Array de 2000 elementos en el mejor caso: [I@2f92e0f4
-Array de 2000 elementos en el peor caso: [I@28a418fc
-Array de 2000 elementos en el caso promedio: [I@5305068a

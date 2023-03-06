@@ -3,6 +3,7 @@ package main.java.es.unex.cum.ada.practica1.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayGenerator {
@@ -57,13 +58,13 @@ public class ArrayGenerator {
         for (int size : sizes) {
             
             int[] bestCase = generateBestCase(size);
-            System.out.println("Array de " + size + " elementos en el mejor caso: " + bestCase.toString());
+            System.out.println("Array de " + size + " elementos en el mejor caso: " + Arrays.toString(bestCase));
             
             int[] worstCase = generateWorstCase(size);
-            System.out.println("Array de " + size + " elementos en el peor caso: " + worstCase.toString());
+            System.out.println("Array de " + size + " elementos en el peor caso: " + Arrays.toString(worstCase));
             
             int[] averageCase = generateAverageCase(size);
-            System.out.println("Array de " + size + " elementos en el caso promedio: " + averageCase.toString());
+            System.out.println("Array de " + size + " elementos en el caso promedio: " + Arrays.toString(averageCase));
             
         }
         // Cerrar el objeto PrintStream para liberar recursos

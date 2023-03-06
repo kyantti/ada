@@ -52,10 +52,6 @@ public class MenuController implements Initializable {
             Stage stage;
             Scene scene;
             for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
-                System.out.println("Size:" + set.getKey() + " -> " + "BubbleSort:" + set.getValue().getBubbleSortTime()
-                        + " - " + "CocktailSort:" + set.getValue().getCocktailSortTime() + " - " + "QuickSort:"
-                        + set.getValue().getQuickSortTime() + " - " + "SelectionSort:"
-                        + set.getValue().getSelectionSortTime());
                 tableViewController.getSortingResultOvlist().add(set.getValue());
             }
 
