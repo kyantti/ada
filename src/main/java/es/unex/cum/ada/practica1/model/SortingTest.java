@@ -6,19 +6,13 @@ import java.util.Map;
 public class SortingTest {
 
     private Map<Integer, SortingResult> resultsMap;
-    private double progress;
 
     public SortingTest() {
-        progress = 0;
         resultsMap = new HashMap<>();
     }
 
     public Map<Integer, SortingResult> getResultsMap() {
         return resultsMap;
-    }
-
-    public double getProgress() {
-        return progress;
     }
 
     public void test() {
@@ -130,8 +124,6 @@ public class SortingTest {
             sortingResult.setSelectionSortTime(selectionSortTime / 3);
 
             resultsMap.put(size, sortingResult);
-
-            progress = progress + (1.0 / (sizes.length));
 
         }
     }
