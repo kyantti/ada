@@ -1,63 +1,61 @@
 package main.java.es.unex.cum.ada.practica1.model;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class SortingResult {
-    private int size;
-    private Map<String, Long> bubbleSortTimes;
-    private Map<String, Long> cocktailSortTimes;
-    private Map<String, Long> quickSortTimes;
-    private Map<String, Long> selectionSortTimes;
+    private String type;
+    private int  arraySize;
+    private long bubbleSortAvgTime;
+    private long cocktailSortAvgTime;
+    private long quickSortAvgTime;
+    private long selectionSortAvgTime;
 
     public SortingResult() {
-        size = 0;
-        bubbleSortTimes = new HashMap<>();
-        cocktailSortTimes = new HashMap<>();
-        quickSortTimes = new HashMap<>();
-        selectionSortTimes = new HashMap<>();
+        type = "";
+        arraySize = 0;
+        bubbleSortAvgTime = 0;
+        cocktailSortAvgTime = 0;
+        quickSortAvgTime = 0;
+        selectionSortAvgTime = 0;
     }
 
-    public int getSize() {
-        return size;
+    public long getBubbleSortAvgTime() {
+        return bubbleSortAvgTime;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setBubbleSortAvgTime(long bubbleSortAvgTime) {
+        this.bubbleSortAvgTime = bubbleSortAvgTime;
     }
 
-    public Map<String, Long> getBubbleSortTimes() {
-        return bubbleSortTimes;
+    public long getCocktailSortAvgTime() {
+        return cocktailSortAvgTime;
     }
 
-    public void setBubbleSortTimes(Map<String, Long> bubbleSortTimes) {
-        this.bubbleSortTimes = bubbleSortTimes;
+    public void setCocktailSortAvgTime(long cocktailSortAvgTime) {
+        this.cocktailSortAvgTime = cocktailSortAvgTime;
     }
 
-    public Map<String, Long> getCocktailSortTimes() {
-        return cocktailSortTimes;
+    public long getQuickSortAvgTime() {
+        return quickSortAvgTime;
     }
 
-    public void setCocktailSortTimes(Map<String, Long> cocktailSortTimes) {
-        this.cocktailSortTimes = cocktailSortTimes;
+    public void setQuickSortAvgTime(long quickSortAvgTime) {
+        this.quickSortAvgTime = quickSortAvgTime;
     }
 
-    public Map<String, Long> getQuickSortTimes() {
-        return quickSortTimes;
+    public long getSelectionSortAvgTime() {
+        return selectionSortAvgTime;
     }
 
-    public void setQuickSortTimes(Map<String, Long> quickSortTimes) {
-        this.quickSortTimes = quickSortTimes;
+    public void setSelectionSortAvgTime(long selectionSortAvgTime) {
+        this.selectionSortAvgTime = selectionSortAvgTime;
     }
 
-    public Map<String, Long> getSelectionSortTimes() {
-        return selectionSortTimes;
+    public int getArraySize() {
+        return arraySize;
     }
 
-    public void setSelectionSortTimes(Map<String, Long> selectionSortTimes) {
-        this.selectionSortTimes = selectionSortTimes;
+    public void setArraySize(int arraySize) {
+        this.arraySize = arraySize;
     }
-
-    
 
 }
