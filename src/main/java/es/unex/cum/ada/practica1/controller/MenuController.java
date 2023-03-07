@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import main.java.es.unex.cum.ada.practica1.model.SortingResult;
@@ -42,7 +43,19 @@ public class MenuController implements Initializable {
         Task<Void> sortingTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                sortingTest.test();
+                switch (((Button) event.getSource()).getText()) {
+                    case "Probar caso mejor":
+                        sortingTest.selectTest("Best");
+                        break;
+                    case "Probar caso medio":
+                        sortingTest.selectTest("Average");
+                        break;
+                    case "Probar caso peor":
+                        sortingTest.selectTest("Worst");
+                        break;
+                    default:
+                        break;
+                }
                 tableViewController.setSortingTest(sortingTest);
                 return null;
             }
@@ -51,6 +64,9 @@ public class MenuController implements Initializable {
         sortingTask.setOnSucceeded(e -> {
             Stage stage;
             Scene scene;
+
+
+
             for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
                 tableViewController.getSortingResultOvlist().add(set.getValue());
             }

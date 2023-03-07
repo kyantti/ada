@@ -49,25 +49,26 @@ public class ArrayGenerator {
 
     public void makeFile(int[] sizes) throws FileNotFoundException{
         // Crear el archivo de texto donde se guardará la salida
-        File file = new File("salida.txt");
-        PrintStream ps = new PrintStream(file);
+        File file = new File("main/resources/es/unex/cum/ada/practica1/data/arrays.txt");
+        PrintStream printStream = new PrintStream(file);
         
         // Redirigir la salida de la consola al archivo de texto
-        System.setOut(ps);
+        System.setOut(printStream);
         
         for (int size : sizes) {
             
+            String arrayDe = "Array de ";
+
             int[] bestCase = generateBestCase(size);
-            System.out.println("Array de " + size + " elementos en el mejor caso: " + Arrays.toString(bestCase));
+            System.out.println(arrayDe + size + " elementos en el mejor caso: " + Arrays.toString(bestCase));
             
             int[] worstCase = generateWorstCase(size);
-            System.out.println("Array de " + size + " elementos en el peor caso: " + Arrays.toString(worstCase));
+            System.out.println(arrayDe + size + " elementos en el peor caso: " + Arrays.toString(worstCase));
             
             int[] averageCase = generateAverageCase(size);
-            System.out.println("Array de " + size + " elementos en el caso promedio: " + Arrays.toString(averageCase));
+            System.out.println(arrayDe + size + " elementos en el caso promedio: " + Arrays.toString(averageCase));
             
         }
-        // Cerrar el objeto PrintStream para liberar recursos
-        ps.close();
+        printStream.close();
     }
 }

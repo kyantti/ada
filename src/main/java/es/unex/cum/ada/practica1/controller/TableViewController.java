@@ -77,11 +77,11 @@ public class TableViewController implements Initializable {
         sortingResultOvlist = FXCollections.observableArrayList();
         
         //COLUMNAS
-        arraySizeColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
-        bubbleSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("bubbleSortTime"));
-        cocktailSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("cocktailSortTime"));
-        quickSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("quickSortTime"));
-        selectionSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("selectionSortTime"));
+        arraySizeColumn.setCellValueFactory(new PropertyValueFactory<>("arraySize"));
+        bubbleSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("bubbleSortAvgTime"));
+        cocktailSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("cocktailSortAvgTime"));
+        quickSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("quickSortAvgTime"));
+        selectionSortTimeCol.setCellValueFactory(new PropertyValueFactory<>("selectionSortAvgTime"));
         
     }
 
@@ -110,10 +110,10 @@ public class TableViewController implements Initializable {
         for (int size : sortingTest.getResultsMap().keySet()) {
             SortingResult result = sortingTest.getResultsMap().get(size);
 
-            bubbleSortSeries.getData().add(new XYChart.Data<>(size, result.getBubbleSortTime()));
-            cocktailSortSeries.getData().add(new XYChart.Data<>(size, result.getCocktailSortTime()));
-            quickSortSeries.getData().add(new XYChart.Data<>(size, result.getQuickSortTime()));
-            selectionSortSeries.getData().add(new XYChart.Data<>(size, result.getSelectionSortTime()));
+            bubbleSortSeries.getData().add(new XYChart.Data<>(size, result.getBubbleSortAvgTime()));
+            cocktailSortSeries.getData().add(new XYChart.Data<>(size, result.getCocktailSortAvgTime()));
+            quickSortSeries.getData().add(new XYChart.Data<>(size, result.getQuickSortAvgTime()));
+            selectionSortSeries.getData().add(new XYChart.Data<>(size, result.getSelectionSortAvgTime()));
         }
 
         // Agregar las series de datos al gráfico de líneas
