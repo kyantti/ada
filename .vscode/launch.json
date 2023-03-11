@@ -6,6 +6,21 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica1.App",
+            "projectName": "ada_d53099ce",
+            "vmArgs": "--module-path /home/pablo/development/sdk/javafx-sdk-17.0.6/lib --add-modules javafx.controls,javafx.fxml",
+        },
+        {
+            "type": "java",
+            "name": "DivisionEntera",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.recursividad.DivisionEntera",
+            "projectName": "ada_d53099ce"
+        },
+        {
+            "type": "java",
             "name": "SortingTest",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica1.model.SortingTest",
