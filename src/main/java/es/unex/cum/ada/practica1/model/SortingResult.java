@@ -16,52 +16,23 @@ public class SortingResult {
         this.selectionSortAvgTime = selectionSortAvgTime;
     }
 
-    public SortingResult() {
-        arraySize = 0;
-        bubbleSortAvgTime = 0;
-        cocktailSortAvgTime = 0;
-        quickSortAvgTime = 0;
-        selectionSortAvgTime = 0;
-    }
-
     public long getBubbleSortAvgTime() {
         return bubbleSortAvgTime;
-    }
-
-    public void setBubbleSortAvgTime(long bubbleSortAvgTime) {
-        this.bubbleSortAvgTime = bubbleSortAvgTime;
     }
 
     public long getCocktailSortAvgTime() {
         return cocktailSortAvgTime;
     }
 
-    public void setCocktailSortAvgTime(long cocktailSortAvgTime) {
-        this.cocktailSortAvgTime = cocktailSortAvgTime;
-    }
-
     public long getQuickSortAvgTime() {
         return quickSortAvgTime;
-    }
-
-    public void setQuickSortAvgTime(long quickSortAvgTime) {
-        this.quickSortAvgTime = quickSortAvgTime;
     }
 
     public long getSelectionSortAvgTime() {
         return selectionSortAvgTime;
     }
 
-    public void setSelectionSortAvgTime(long selectionSortAvgTime) {
-        this.selectionSortAvgTime = selectionSortAvgTime;
-    }
-
     public int getArraySize() {
         return arraySize;
     }
-
-    public void setArraySize(int arraySize) {
-        this.arraySize = arraySize;
-    }
-
 }
