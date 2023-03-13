@@ -90,7 +90,7 @@ public class TableViewController implements Initializable {
         // Crear un gráfico de líneas con el tamaño del arreglo en el eje X y el tiempo
         // en el eje Y
         NumberAxis xAxis = new NumberAxis("Tamaño", 2000, 20000, 2000);
-        NumberAxis yAxis = new NumberAxis("Tiempo", 0, 700, 50);
+        NumberAxis yAxis = new NumberAxis("Tiempo", 0, 600, 50);
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
 
         // Crear una serie de datos para cada algoritmo de ordenamiento

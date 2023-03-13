@@ -1,6 +1,5 @@
 package main.java.es.unex.cum.ada.practica1.model;
 
-
 public class SortingResult {
     private int  arraySize;
     private long bubbleSortAvgTime;

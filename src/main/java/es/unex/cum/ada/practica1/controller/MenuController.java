@@ -65,8 +65,6 @@ public class MenuController implements Initializable {
             Stage stage;
             Scene scene;
 
-
-
             for (Entry<Integer, SortingResult> set : sortingTest.getResultsMap().entrySet()) {
                 tableViewController.getSortingResultOvlist().add(set.getValue());
             }

@@ -1,9 +1,5 @@
 package main.java.es.unex.cum.ada.practica1.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.Random;
 
 public class ArrayGenerator {
@@ -45,30 +41,5 @@ public class ArrayGenerator {
             array[i] = random.nextInt(0, size);
         }
         return array;
-    }
-
-    public void makeFile(int[] sizes) throws FileNotFoundException{
-        // Crear el archivo de texto donde se guardará la salida
-        File file = new File("main/resources/es/unex/cum/ada/practica1/data/arrays.txt");
-        PrintStream printStream = new PrintStream(file);
-        
-        // Redirigir la salida de la consola al archivo de texto
-        System.setOut(printStream);
-        
-        for (int size : sizes) {
-            
-            String arrayDe = "Array de ";
-
-            int[] bestCase = generateBestCase(size);
-            System.out.println(arrayDe + size + " elementos en el mejor caso: " + Arrays.toString(bestCase));
-            
-            int[] worstCase = generateWorstCase(size);
-            System.out.println(arrayDe + size + " elementos en el peor caso: " + Arrays.toString(worstCase));
-            
-            int[] averageCase = generateAverageCase(size);
-            System.out.println(arrayDe + size + " elementos en el caso promedio: " + Arrays.toString(averageCase));
-            
-        }
-        printStream.close();
     }
 }
