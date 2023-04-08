@@ -38,7 +38,7 @@ public class ArrayGenerator {
     public int[] generateAverageCase(int size) {
         array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = random.nextInt(0, size);
+            array[i] = random.nextInt(size);
         }
         return array;
     }

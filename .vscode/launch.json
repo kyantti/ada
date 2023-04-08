@@ -9,8 +9,51 @@
             "name": "App",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica1.App",
+            "projectName": "ada_99c351ae",
+            "vmArgs": "--module-path /home/pablo/Development/sdk/javafx-sdk-17.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "ClosestNumbers",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica2.ClosestNumbers",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "JardineroTulipanes",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica2.JardineroTulipanes",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearch",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica2.BinarySearch",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "PeakElement",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica2.PeakElement",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica2.Main",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica1.App",
             "projectName": "ada_d53099ce",
-            "vmArgs": "--module-path /home/pablo/development/sdk/javafx-sdk-17.0.6/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /home/pablo/Development/sdk/javafx-sdk-17.0.6/lib --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
