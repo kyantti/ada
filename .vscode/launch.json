@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Main",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "Strava",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Strava",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
+            "name": "Strada",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Strada",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica1.App",
