@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public class Strava {
 
-    private static class Section implements Comparable<Section>{
-    
+    private static class Section implements Comparable<Section> {
+
         int position;
         int length;
 
@@ -20,7 +20,7 @@ public class Strava {
         public int getPosition() {
             return position;
         }
-        
+
         public int getLength() {
             return length;
         }
@@ -31,73 +31,62 @@ public class Strava {
         }
 
         @Override
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof Section)) {
-                return false;
-            }
-            Section other = (Section) obj;
-            return this.position == other.getPosition() && this.length == other.getLength();
-        }
-        @Override
         public String toString() {
             return "Section [position=" + position + ", length=" + length + "]";
         }
+
+        
     }
 
-    private static List <Section> sections = new ArrayList<>();
+    private static List<Section> sections = new ArrayList<>();
 
-    private static void minSectionsRequired(List <Section> lowerHalf, List <Section> higherHalf){
-        for (int i = 0; i < lowerHalf.size(); i++) {
-            Section section = lowerHalf.get(i);
-            if (section.getPosition() - (section.getLength() / 2) > 0) {
-                lowerHalf.remove(i);
-                i--; // actualizar el índice para compensar la eliminación
+    public static int minSectionsRequired(List<Section> sections, int routeLength) {
+    int currentPos = 0;
+    int numSections = 0;
+    int index = 0;
+
+    while (currentPos < routeLength) {
+        Section longestSection = null;
+        int longestLength = 0;
+
+        for (int i = index; i < sections.size(); i++) {
+            Section section = sections.get(i);
+            int startPos = section.getPosition() - (section.getLength() / 2);
+            int endPos = section.getPosition() + (section.getLength() / 2);
+
+            if (startPos <= currentPos && endPos > currentPos && endPos > longestLength) {
+                longestSection = section;
+                longestLength = endPos;
+                index = i;
             }
         }
-    
-        for (int i = 0; i < higherHalf.size(); i++) {
-            Section section = higherHalf.get(i);
-            if (section.getPosition() + (section.getLength() / 2) < 40) {
-                higherHalf.remove(i);
-                i--; // actualizar el índice para compensar la eliminación
-            }
+
+        if (longestSection == null) {
+            return -1;
         }
+        
+        currentPos = longestLength;
+        numSections++;
     }
+
+    return numSections;
+}
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        int numOfSections = scanner.nextInt(); 
-        int routeLenght = scanner.nextInt(); 
-        
-        
+
+        int numOfSections = scanner.nextInt();
+        int routeLenght = scanner.nextInt();
+
         for (int i = 0; i < numOfSections; i++) {
-            sections.add(new Section(scanner.nextInt(),scanner.nextInt()));
+            sections.add(new Section(scanner.nextInt(), scanner.nextInt()));
         }
 
         scanner.close();
 
         Collections.sort(sections);
 
-        List<Section> lowerHalf = new ArrayList<>(sections.subList(0, sections.size() / 2));
-        List<Section> higherHalf = new ArrayList<>(sections.subList(sections.size() / 2, sections.size()));
-
-        minSectionsRequired(lowerHalf, higherHalf);
-
-        
-
-        for (Section section : lowerHalf) {
-            System.out.println(section.toString());
-        }
-
-        for (Section section : higherHalf) {
-            System.out.println(section.toString());
-        }
-        
-        
+        System.out.println(minSectionsRequired(sections, routeLenght));
 
     }
 }

@@ -9,6 +9,20 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica3.Main",
+            "projectName": "ada_151a96cb"
+        },
+        {
+            "type": "java",
+            "name": "Strava",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Strava",
+            "projectName": "ada_151a96cb"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Main",
             "projectName": "ada_99c351ae"
         },
         {

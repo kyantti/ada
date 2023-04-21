@@ -5,14 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Strava3 {
     private static class Section implements Comparable<Section> {
 
         int position;
         int length;
         int startPoint;
         int endPoint;
-        boolean takeIt;
 
         public Section(int position, int length) {
             this.position = position;
@@ -43,64 +42,44 @@ public class Main {
             return endPoint;
         }
 
-        public void takeIt(boolean takeIt) {
-            this.takeIt = takeIt;
-        }
 
         @Override
         public int compareTo(Section section) {
-            return Integer.compare(section.length, this.length);
+            return Integer.compare(this.startPoint, section.startPoint);
         }
 
         @Override
         public String toString() {
             return "Section [position=" + position + ", length=" + length + ", startPoint=" + startPoint + ", endPoint="
-                    + endPoint + ", takeIt=" + takeIt + "]";
+                    + endPoint + "]";
         }
 
-        public boolean isTakeIt() {
-            return takeIt;
+        public boolean coversStartPoint(){
+            boolean coversStartPoint = false;
+            if (getStartPoint() <= 0) {
+                coversStartPoint = true; 
+            }
+            return coversStartPoint;
         }
+    
+        public boolean coversEndPoint(int endPoint){
+            boolean coversEndPoint = false;
+            if (getEndPoint() >= endPoint ) {
+                coversEndPoint = true; 
+            }
+            return coversEndPoint;
+        }
+
     }
 
     private static List<Section> sections = new ArrayList<>();
 
-    public static boolean coversStartPoint(Section section){
-        boolean coversStartPoint = false;
-        if (section.getStartPoint() <= 0) {
-            coversStartPoint = true; 
-        }
-        return coversStartPoint;
-    }
-
-    public static boolean coversEndPoint(Section section, int endPoint){
-        boolean coversEndPoint = false;
-        if (section.getEndPoint() >= endPoint ) {
-            coversEndPoint = true; 
-        }
-        return coversEndPoint;
-    }
+   
 
 
     public static int minSectionsRequired(List<Section> sections, int routeLength) {
-        boolean startCovered = false;
-        boolean endCovered = false;
-        int count = 0;
-        //si los tramos no son iguales
-        sections.get(0).takeIt(true);
-        for (int i = 1; i < sections.size(); i++) {
-            if (coversStartPoint(sections.get(i)) && !startCovered) {
-                sections.get(i).takeIt(true);
-                startCovered = true;
-
-            }
-            if (coversEndPoint(sections.get(i), routeLength) && !endCovered) {
-                sections.get(i).takeIt(true);
-                endCovered = true;
-            }
-        }
+        int currentPos = 0;
         
-        return count;
     }
 
     public static void main(String[] args) {
