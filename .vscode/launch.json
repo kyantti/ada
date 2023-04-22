@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main4",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.Main4",
+            "projectName": "ada_99c351ae"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica3.Main",
