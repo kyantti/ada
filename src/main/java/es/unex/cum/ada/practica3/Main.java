@@ -2,12 +2,6 @@ package main.java.es.unex.cum.ada.practica3;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +10,6 @@ public class Main {
 
         int middlePoint;
         int length;
-        boolean valid;
 
         public Section(int middlePoint, int length) {
             this.middlePoint = middlePoint;
@@ -29,10 +22,6 @@ public class Main {
 
         public int getLength() {
             return length;
-        }
-
-        public void setValid(boolean valid) {
-            this.valid = valid;
         }
 
         @Override
@@ -57,11 +46,7 @@ public class Main {
 
         @Override
         public String toString() {
-            return "Section [middlePoint=" + middlePoint + ", length=" + length + ", valid=" + valid + "]";
-        }
-
-        public boolean isValid() {
-            return valid;
+            return "Section [middlePoint=" + middlePoint + ", length=" + length + "]";
         }
 
         public boolean coversStartPoint(){
@@ -113,7 +98,6 @@ public class Main {
         //compruebo si la ruta cubre al menos el principio y el final
         for (Section section : sections) {
             if (section.coversStartPoint() && !startCovered) {
-                section.setValid(true);
                 startCovered = true;
                 auxSection = section;
             }
