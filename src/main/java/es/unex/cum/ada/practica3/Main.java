@@ -32,16 +32,12 @@ public class Main {
         public boolean intersects(Section section) {
             int halfLength = length / 2;
             int otherHalfLength = section.getLength() / 2;
-    
-           
-            int start = middlePoint - halfLength;
+
             int end = middlePoint + halfLength;
-    
-          
+
             int otherStart = section.middlePoint - otherHalfLength;
-            int otherEnd = section.middlePoint + otherHalfLength;
-    
-            return (start <= otherEnd && otherStart <= end);
+
+            return (otherStart <= end || otherStart == end + 1);
         }
 
         @Override
@@ -49,18 +45,18 @@ public class Main {
             return "Section [middlePoint=" + middlePoint + ", length=" + length + "]";
         }
 
-        public boolean coversStartPoint(){
+        public boolean coversStartPoint() {
             boolean coversStartPoint = false;
-            if (middlePoint - (length/2) <= 0) {
-                coversStartPoint = true; 
+            if (middlePoint - (length / 2) <= 0) {
+                coversStartPoint = true;
             }
             return coversStartPoint;
         }
-        
-        public boolean coversEndPoint(int endPoint){
+
+        public boolean coversEndPoint(int endPoint) {
             boolean coversEndPoint = false;
-            if (middlePoint + (length/2) >= endPoint ) {
-                coversEndPoint = true; 
+            if (middlePoint + (length / 2) >= endPoint) {
+                coversEndPoint = true;
             }
             return coversEndPoint;
         }
@@ -83,52 +79,55 @@ public class Main {
 
     }
 
-
     private static List<Section> sections = new ArrayList<>();
-    
 
     public static int minSectionsRequired(List<Section> sections, int routeLength) {
         boolean startCovered = false;
         boolean endCovered = false;
-        //la utilizare de auxiliar para ir viendo si los segmentos son contiguos
+        // la utilizare de auxiliar para ir viendo si los segmentos son contiguos
         Section auxSection = null;
 
         int numOfSections = -1;
 
-        //compruebo si la ruta cubre al menos el principio y el final
-        for (Section section : sections) {
-            if (section.coversStartPoint() && !startCovered) {
-                startCovered = true;
-                auxSection = section;
-            }
-
-            if (section.coversEndPoint(routeLength) && !endCovered) {
-                endCovered = true;
-            }
-        }
-        //si no cubre el principio y el final no hay nada que hacer
-        if (!startCovered || !endCovered) {
-            return numOfSections;
-        }
-        //si el segmento del principio cubre el final solamente hay 1 segmento
-        else if (auxSection.coversEndPoint(routeLength)) {
-            return 1;
-        }
-        //si hay mas segmentos
-        else{
-            //tomo el del principio
-            numOfSections = 1;
+        //si la longitud de la ruta es mayor que 0 hago algo
+        if (routeLength > 0) {
+            // compruebo si la ruta cubre al menos el principio y el final
             for (Section section : sections) {
-                //empiezo a comparar utilizando el segmento del principio con el mas largo (no con el mismo) 
-                if (auxSection.intersects(section) && !auxSection.equals(section) ) {
-
+                if (section.coversStartPoint() && !startCovered) {
+                    startCovered = true;
                     auxSection = section;
+                }
 
-                    numOfSections++;
-                    
-                    // si se tocan lo pillo y si ademas resulta que justo ese llega hasta el final devuelvo el numero de segmentos que llevo
-                    if (section.coversEndPoint(routeLength)) {
-                        return numOfSections;
+                if (section.coversEndPoint(routeLength) && !endCovered) {
+                    endCovered = true;
+                }
+            }
+            // si no cubre el principio y el final no hay nada que hacer
+            if (!startCovered || !endCovered) {
+                return numOfSections;
+            }
+            // si el segmento del principio cubre el final solamente hay 1 segmento
+            else if (auxSection.coversEndPoint(routeLength)) {
+                return 1;
+            }
+            // si hay mas segmentos
+            else {
+                // tomo el del principio
+                numOfSections = 1;
+                for (Section section : sections) {
+                    // empiezo a comparar utilizando el segmento del principio con el mas largo (no
+                    // con el mismo)
+                    if (auxSection.intersects(section) && !auxSection.equals(section)) {
+
+                        auxSection = section;
+
+                        numOfSections++;
+
+                        // si se tocan lo pillo y si ademas resulta que justo ese llega hasta el final
+                        // devuelvo el numero de segmentos que llevo
+                        if (section.coversEndPoint(routeLength)) {
+                            return numOfSections;
+                        }
                     }
                 }
             }
