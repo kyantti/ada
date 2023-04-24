@@ -9,6 +9,13 @@
             "name": "JuanCarlos",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.ada.practica3.JuanCarlos",
+            "projectName": "ada_151a96cb"
+        },
+        {
+            "type": "java",
+            "name": "JuanCarlos",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.ada.practica3.JuanCarlos",
             "projectName": "ada_99c351ae"
         },
         {

@@ -10,6 +10,7 @@ public class Main {
 
         int middlePoint;
         int length;
+        boolean alreadyCompared;
 
         public Section(int middlePoint, int length) {
             this.middlePoint = middlePoint;
@@ -22,6 +23,14 @@ public class Main {
 
         public int getLength() {
             return length;
+        }
+
+        public boolean isAlreadyCompared() {
+            return alreadyCompared;
+        }
+
+        public void setAlreadyCompared(boolean alreadyCompared) {
+            this.alreadyCompared = alreadyCompared;
         }
 
         @Override
@@ -37,7 +46,7 @@ public class Main {
 
             int otherStart = section.middlePoint - otherHalfLength;
 
-            return (otherStart <= end);
+            return (otherStart <= end && otherStart >= middlePoint);
         }
 
         public boolean isAdjacentTo(Section section){
@@ -125,8 +134,9 @@ public class Main {
             numOfSections = 1;
             for (Section section : sections) {
                 // empiezo a comparar utilizando el segmento del principio con el mas largo (no con el mismo)
-                if ((auxSection.intersects(section) || auxSection.isAdjacentTo(section)) && !auxSection.equals(section)) {
+                if ((auxSection.intersects(section) || auxSection.isAdjacentTo(section)) && !auxSection.equals(section) && !section.isAlreadyCompared()) {
 
+                    auxSection.setAlreadyCompared(true);
                     auxSection = section;
 
                     numOfSections++;
