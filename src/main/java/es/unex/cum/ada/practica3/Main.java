@@ -37,7 +37,18 @@ public class Main {
 
             int otherStart = section.middlePoint - otherHalfLength;
 
-            return (otherStart <= end || otherStart == end + 1);
+            return (otherStart <= end);
+        }
+
+        public boolean isAdjacentTo(Section section){
+            int halfLength = length / 2;
+            int otherHalfLength = section.getLength() / 2;
+
+            int end = middlePoint + halfLength;
+
+            int otherStart = section.middlePoint - otherHalfLength;
+
+            return (otherStart == end + 1);
         }
 
         @Override
@@ -89,45 +100,41 @@ public class Main {
 
         int numOfSections = -1;
 
-        //si la longitud de la ruta es mayor que 0 hago algo
-        if (routeLength > 0) {
-            // compruebo si la ruta cubre al menos el principio y el final
+        // compruebo si la ruta cubre al menos el principio y el final
+        for (Section section : sections) {
+            if (section.coversStartPoint() && !startCovered) {
+                startCovered = true;
+                auxSection = section;
+            }
+
+            if (section.coversEndPoint(routeLength) && !endCovered) {
+                endCovered = true;
+            }
+        }
+        // si no cubre el principio y el final no hay nada que hacer
+        if (!startCovered || !endCovered) {
+            return numOfSections;
+        }
+        // si el segmento del principio cubre el final solamente hay 1 segmento
+        else if (auxSection.coversEndPoint(routeLength)) {
+            return 1;
+        }
+        // si hay mas segmentos
+        else {
+            // tomo el del principio
+            numOfSections = 1;
             for (Section section : sections) {
-                if (section.coversStartPoint() && !startCovered) {
-                    startCovered = true;
+                // empiezo a comparar utilizando el segmento del principio con el mas largo (no con el mismo)
+                if ((auxSection.intersects(section) || auxSection.isAdjacentTo(section)) && !auxSection.equals(section)) {
+
                     auxSection = section;
-                }
 
-                if (section.coversEndPoint(routeLength) && !endCovered) {
-                    endCovered = true;
-                }
-            }
-            // si no cubre el principio y el final no hay nada que hacer
-            if (!startCovered || !endCovered) {
-                return numOfSections;
-            }
-            // si el segmento del principio cubre el final solamente hay 1 segmento
-            else if (auxSection.coversEndPoint(routeLength)) {
-                return 1;
-            }
-            // si hay mas segmentos
-            else {
-                // tomo el del principio
-                numOfSections = 1;
-                for (Section section : sections) {
-                    // empiezo a comparar utilizando el segmento del principio con el mas largo (no
-                    // con el mismo)
-                    if (auxSection.intersects(section) && !auxSection.equals(section)) {
+                    numOfSections++;
 
-                        auxSection = section;
-
-                        numOfSections++;
-
-                        // si se tocan lo pillo y si ademas resulta que justo ese llega hasta el final
-                        // devuelvo el numero de segmentos que llevo
-                        if (section.coversEndPoint(routeLength)) {
-                            return numOfSections;
-                        }
+                    // si se tocan lo pillo y si ademas resulta que justo ese llega hasta el final
+                    // devuelvo el numero de segmentos que llevo
+                    if (section.coversEndPoint(routeLength)) {
+                        return numOfSections;
                     }
                 }
             }
@@ -149,7 +156,12 @@ public class Main {
         scanner.close();
 
         Collections.sort(sections);
-
-        System.out.println(minSectionsRequired(sections, routeLenght));
+        
+        if (routeLenght > 0) {
+            System.out.println(minSectionsRequired(sections, routeLenght));
+        }
+        else{
+            System.out.println(-1);
+        }
     }
 }
